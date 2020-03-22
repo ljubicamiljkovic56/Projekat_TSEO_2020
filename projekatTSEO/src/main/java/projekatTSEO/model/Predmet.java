@@ -11,9 +11,9 @@ import javax.persistence.Id;
 public class Predmet {
 	
 	@Id
-	@Column(name = "idPredmeta")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPredmeta;
+	private int id;
 	
 	@Column(name = "naziv")
 	private String naziv;
@@ -22,12 +22,12 @@ public class Predmet {
 	private int bodovi;
 	
 
-	public int getIdPredmeta() {
-		return idPredmeta;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdPredmeta(int idPredmeta) {
-		this.idPredmeta = idPredmeta;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNaziv() {
