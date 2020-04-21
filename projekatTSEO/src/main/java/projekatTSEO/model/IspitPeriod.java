@@ -90,7 +90,7 @@ public class IspitPeriod {
 
 	@Override
 	public String toString() {
-		return "ExamPeriod [id=" + id + ", name=" + ime + ", startDate="
+		return "IspitPeriod [id=" + id + ", name=" + ime + ", startDate="
 				+ startDate + ", endDate=" + endDate + "]";
 	}
 

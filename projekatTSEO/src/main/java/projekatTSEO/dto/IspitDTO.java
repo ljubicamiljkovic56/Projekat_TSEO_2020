@@ -1,16 +1,24 @@
 package projekatTSEO.dto;
 
+import java.util.Date;
 import projekatTSEO.model.Ispit;
+
 
 public class IspitDTO {
 	
-	private int id;
-	
-	private String nazivPredmeta;
+	private Long id;
 	
 	private double brojBodova;
 	
 	private double kolokvijumBodovi;
+	
+	private StudentDTO student;
+	
+	private PredmetDTO predmet;
+	
+	private IspitPeriodDTO ispitPeriod;
+	
+	private Date date;
 	
 	private String imeStudenta;
 	
@@ -24,43 +32,72 @@ public class IspitDTO {
 	
 	private int ocena;
 	
+	public IspitDTO() {
+		
+	}
+	
 	public IspitDTO(Ispit ispit) {
-		this(ispit.getId(), ispit.getNazivPredmeta(), ispit.getImeStudenta(), ispit.getPrezimeStudenta(), ispit.getBrojBodova(), ispit.getOcena());
+		id = ispit.getId();
+		brojBodova = ispit.getBrojBodova();
+		pObavezeBodovi = ispit.getPObavezeBodovi();
+		date = ispit.getDate();
+		predmet = new PredmetDTO(ispit.getPredmet());
+		student = new StudentDTO(ispit.getStudent());
+		ispitPeriod = new IspitPeriodDTO(ispit.getIspitPeriod());
 	}
 	
-	public IspitDTO(int id, String nazivPredmeta, String imeStudenta, String prezimeStudenta, double brojBodova, int ocena) {
-		super();
-		this.id = id;
-		this.nazivPredmeta = nazivPredmeta;
-		this.imeStudenta = imeStudenta;
-		this.prezimeStudenta = prezimeStudenta;
-		this.brojBodova = brojBodova;
-		this.ocena = ocena;
-	}
-	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
-	
 	}
 	
-	public String getNazivPredmeta() {
-		return nazivPredmeta;
+	public double getBrojBodova() {
+		return brojBodova;
+	}
+	
+	public void setBrojBodova(double brojBodova) {
+		this.brojBodova = brojBodova;
+	}
+	
+	public double getPObavezeBodovi() {
+		return pObavezeBodovi;
+	}
+	public void setPObavezeBodovi(double pObavezeBodovi) {
+		this.pObavezeBodovi = pObavezeBodovi;
+	}
+	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	public PredmetDTO getPredmet() {
+		return predmet;
 	}
 
-	public void setNazivPredmeta(String nazivPredmeta) {
-		this.nazivPredmeta = nazivPredmeta;
+	public void setPredmet(PredmetDTO predmeta) {
+		this.predmet = predmet;
 	}
 	
-	public String getImeStudenta() {
-		return imeStudenta;
+	public StudentDTO getStudent() {
+		return student;
 	}
 
-	public void setImeStudenta(String imeStudenta) {
-		this.imeStudenta = imeStudenta;
+	public void setStudent(StudentDTO student) {
+		this.student = student;
+	}
+	
+	public IspitPeriodDTO getIspitPeriod() {
+		return ispitPeriod;
+	}
+	
+	public void setIspitPeriod(IspitPeriodDTO ispitPeriod) {
+		this.ispitPeriod = ispitPeriod;
 	}
 	
 	

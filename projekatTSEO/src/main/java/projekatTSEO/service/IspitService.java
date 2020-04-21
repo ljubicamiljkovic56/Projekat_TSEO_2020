@@ -14,7 +14,7 @@ public class IspitService {
 	@Autowired
 	IspitRepository ispitRepository;
 	
-	public Ispit findOne(int id) {
+	public Ispit findOne(Long id) {
 		return ispitRepository.findById(id).orElse(null);
 	}
 	
@@ -27,7 +27,7 @@ public class IspitService {
 		return ispitRepository.save(ispit);
 	}
 
-	public void remove(int id) {
+	public void remove(Long id) {
 		ispitRepository.deleteById(id);
 	}
 

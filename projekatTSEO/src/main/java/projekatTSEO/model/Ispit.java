@@ -2,11 +2,16 @@ package projekatTSEO.model;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import java.util.Date;
 
 @Entity
 public class Ispit {
@@ -14,7 +19,19 @@ public class Ispit {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
+	
+	private Date date;
+	
+	
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	private Predmet predmet;
+	
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	private Student student;
+	
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	private IspitPeriod ispitPeriod;
 	
 	@Column(name = "nazivPredmeta")
 	private String nazivPredmeta;
@@ -43,20 +60,28 @@ public class Ispit {
 	@Column(name = "ocena")
 	private int ocena;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	public String getNazivPredmeta() {
-		return nazivPredmeta;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setNazivPredmeta(String nazivPredmeta) {
-		this.nazivPredmeta = nazivPredmeta;
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	public Predmet getPredmet() {
+		return predmet;
+	}
+
+	public void setPredmet(Predmet predmet) {
+		this.predmet = predmet;
 	}
 	
 	public double getBrojBodova() {
@@ -76,6 +101,14 @@ public class Ispit {
 		this.kolokvijumBodovi = kolokvijumBodovi;
 	}
 	
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	
 	public String getImeStudenta() {
 		return imeStudenta;
 	}
@@ -90,6 +123,14 @@ public class Ispit {
 
 	public void setPrezimeStudenta(String prezimeStudenta) {
 		this.prezimeStudenta = prezimeStudenta;
+	}
+	
+	public IspitPeriod getIspitPeriod() {
+		return ispitPeriod;
+	}
+
+	public void setIspitPeriod(IspitPeriod ispitPeriod) {
+		this.ispitPeriod = ispitPeriod;
 	}
 	
 	public String getImeProfesora() {
