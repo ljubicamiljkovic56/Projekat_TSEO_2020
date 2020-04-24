@@ -4,7 +4,7 @@ import projekatTSEO.model.Student;
 
 public class StudentDTO {
 	
-	private int id;
+	private Long id;
 	
 	private String brojIndeksa;
 	
@@ -21,7 +21,7 @@ public class StudentDTO {
 		this(student.getId(), student.getBrojIndeksa(), student.getIme(), student.getPrezime());
 	}
 
-	public StudentDTO(int id, String brojIndeksa, String ime, String prezime) {
+	public StudentDTO(Long id, String brojIndeksa, String ime, String prezime) {
 		super();
 		this.id = id;
 		this.brojIndeksa = brojIndeksa;
@@ -29,11 +29,11 @@ public class StudentDTO {
 		this.prezime = prezime;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

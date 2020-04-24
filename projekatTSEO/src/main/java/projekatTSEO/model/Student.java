@@ -1,19 +1,24 @@
 package projekatTSEO.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@Column(name = "korisnickoIme")
 	private String korisnickoIme;
@@ -34,7 +39,7 @@ public class Student {
 	private String brojIndeksa;
 	
 	@Column(name = "pohadjanjePredmeta")
-	private ArrayList<Predmet> pohadjanjePredmeta;
+	private Set<PohadjanjePredmeta> pohadjanjePredmeta;
 	
 	@Column(name = "polozeniPredmeti")
 	private ArrayList<Predmet> polozeniPredmeti;
@@ -48,6 +53,9 @@ public class Student {
 	@Column(name = "uplate")
 	private ArrayList<Uplata> uplate;
 	
+	
+	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private Set<Ispit> ispiti = new HashSet<Ispit>();
 
 	public String getBrojIndeksa() {
 		return brojIndeksa;
@@ -59,12 +67,12 @@ public class Student {
 	}
 
 
-	public ArrayList<Predmet> getPohadjanjePredmeta() {
+	public Set<PohadjanjePredmeta> getPohadjanjePredmeta() {
 		return pohadjanjePredmeta;
 	}
 
 
-	public void setPohadjanjePredmeta(ArrayList<Predmet> pohadjanjePredmeta) {
+	public void setPohadjanjePredmeta(Set<PohadjanjePredmeta> pohadjanjePredmeta) {
 		this.pohadjanjePredmeta = pohadjanjePredmeta;
 	}
 
@@ -107,14 +115,22 @@ public class Student {
 	public void setUplate(ArrayList<Uplata> uplate) {
 		this.uplate = uplate;
 	}
+	
+	public Set<Ispit> getIspiti() {
+		return ispiti;
+	}
+
+	public void setIspiti(Set<Ispit> ispiti) {
+		this.ispiti = ispiti;
+	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

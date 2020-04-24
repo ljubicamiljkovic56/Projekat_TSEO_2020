@@ -41,7 +41,7 @@ public class PohadjanjePredmetaController {
 	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<PohadjanjePredmetaDTO> getOne(@PathVariable int id){
+	public ResponseEntity<PohadjanjePredmetaDTO> getOne(@PathVariable Long id){
 		PohadjanjePredmeta p = ppS.findOne(id);
 		PohadjanjePredmetaDTO pDTO;
 		if(p == null)
@@ -73,7 +73,7 @@ public class PohadjanjePredmetaController {
 	
 	
 	@RequestMapping(value = "/id", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable int id){
+	public ResponseEntity<Void> delete(@PathVariable Long id){
 		PohadjanjePredmeta p = ppS.findOne(id);
 		if(p != null) {
 			ppS.remove(id);

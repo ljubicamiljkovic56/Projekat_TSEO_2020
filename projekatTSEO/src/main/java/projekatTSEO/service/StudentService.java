@@ -16,7 +16,7 @@ public class StudentService {
 	@Autowired
 	StudentRepository studentRepository;
 	
-	public Student findOne(int id) {
+	public Student findOne(Long id) {
 		return studentRepository.findById(id).orElse(null);
 	}
 
@@ -32,7 +32,7 @@ public class StudentService {
 		return studentRepository.save(student);
 	}
 
-	public void remove(int id) {
+	public void remove(Long id) {
 		studentRepository.deleteById(id);
 	}
 	

@@ -27,7 +27,7 @@ public class PohadjanjePredmetaService {
 		return pohadjanjePredmetaRepository.findAll(page);
 	}
 	
-	public PohadjanjePredmeta findOne(int id) {
+	public PohadjanjePredmeta findOne(Long id) {
 		return pohadjanjePredmetaRepository.findById(id).orElse(null);
 	}
 	
@@ -47,7 +47,7 @@ public class PohadjanjePredmetaService {
 		return pohadjanjePredmetaRepository.save(p);
 	}
 	
-	public void remove(int id) {
+	public void remove(Long id) {
 		pohadjanjePredmetaRepository.deleteById(id);;
 	}
 	

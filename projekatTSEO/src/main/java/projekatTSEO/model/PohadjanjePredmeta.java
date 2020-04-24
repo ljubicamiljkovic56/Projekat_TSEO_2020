@@ -1,6 +1,7 @@
 package projekatTSEO.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,11 @@ public class PohadjanjePredmeta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
+	
+	private Date startDate;
+	
+	private Date endDate;
 	
 	@Column
 	private Predmet predmet;
@@ -24,7 +29,7 @@ public class PohadjanjePredmeta {
 	@Column
 	private ArrayList<Student> studenti;
 
-	public PohadjanjePredmeta(int id, Predmet predmet, ArrayList<Profesor> predavaci, ArrayList<Student> studenti) {
+	public PohadjanjePredmeta(Long id, Predmet predmet, ArrayList<Profesor> predavaci, ArrayList<Student> studenti) {
 		super();
 		this.id = id;
 		this.predmet = predmet;
@@ -36,12 +41,28 @@ public class PohadjanjePredmeta {
 		super();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public Predmet getPredmet() {
