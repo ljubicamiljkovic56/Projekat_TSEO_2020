@@ -16,15 +16,15 @@ public class Uplata {
 	private Long id;
 	
 	@Column(name = "uplatilac")
-	private String uplatilac;
+	private Student student;
 	
-	@Column(name = "svrhaUplate")
+	@Column(name = "svrha_uplate")
 	private String svrhaUplate;
 	
 	@Column(name = "primalac")
 	private String primalac;
 	
-	@Column(name = "sifraPlacanja")
+	@Column(name = "sifra_placanja")
 	private int sifraPlacanja;
 	
 	@Column(name = "valuta")
@@ -33,22 +33,22 @@ public class Uplata {
 	@Column(name = "iznos")
 	private double iznos;
 	
-	@Column(name = "racunPrimaoca")
+	@Column(name = "racun_primaoca")
 	private String racunPrimaoca;
 	
-	@Column(name = "brojModela")
+	@Column(name = "broj_modela")
 	private int brojModela;
 	
-	@Column(name = "pozivNaBroj")
+	@Column(name = "poziv_na_broj")
 	private String pozivNaBroj;
 	
-	@Column(name = "mestoUplate")
+	@Column(name = "mesto_uplate")
 	private String mestoUplate;
 	
-	@Column(name = "datumUplate")
+	@Column(name = "datum_uplate")
 	private Date datumUplate;
 	
-	@Column(name = "datumValute")
+	@Column(name = "datum_valute")
 	private Date datumValute;
 	
 	@Column(name = "potpis")
@@ -62,12 +62,12 @@ public class Uplata {
 		this.id = id;
 	}
 
-	public String getUplatilac() {
-		return uplatilac;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setUplatilac(String uplatilac) {
-		this.uplatilac = uplatilac;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public String getSvrhaUplate() {

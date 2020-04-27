@@ -20,7 +20,7 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "korisnickoIme")
+	@Column(name = "korisnicko_ime")
 	private String korisnickoIme;
 	
 	@Column(name = "lozinka")
@@ -33,18 +33,18 @@ public class Student {
 	private String prezime;
 	
 	@Column(name = "uloga")
-	private Uloga uloga = Uloga.student;
+	private Uloga uloga;
 	
-	@Column(name = "brojIndeksa")
+	@Column(name = "broj_indeksa")
 	private String brojIndeksa;
 	
-	@Column(name = "pohadjanjePredmeta")
+	@Column(name = "pohadjanje_predmeta")
 	private Set<PohadjanjePredmeta> pohadjanjePredmeta;
 	
-	@Column(name = "polozeniPredmeti")
+	@Column(name = "polozeni_predmeti")
 	private ArrayList<Predmet> polozeniPredmeti;
 	
-	@Column(name = "nepolozeniPredmeti")
+	@Column(name = "nepolozeni_predmeti")
 	private ArrayList<Predmet> nepolozeniPredmeti;
 	
 	@Column(name = "dokumenta")

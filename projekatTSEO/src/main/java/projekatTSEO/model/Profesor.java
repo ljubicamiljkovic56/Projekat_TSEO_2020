@@ -16,7 +16,7 @@ public class Profesor extends Korisnik{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "korisnickoIme")
+	@Column(name = "korisnicko_ime")
 	private String korisnickoIme;
 	
 	@Column(name = "lozinka")
@@ -29,12 +29,12 @@ public class Profesor extends Korisnik{
 	private String prezime;
 	
 	@Column(name = "uloga")
-	private Uloga uloga = Uloga.profesor;
+	private Uloga uloga;
 	
 	@Column(name = "zvanje")
 	private Zvanje zvanje;
 	
-	@Column(name = "predajePredmete")
+	@Column(name = "predaje_predmete")
 	private ArrayList<Predmet> predajePredmete;
 
 	public Zvanje getZvanje() {

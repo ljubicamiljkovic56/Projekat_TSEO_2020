@@ -13,7 +13,7 @@ public class Dokument {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "vrstaDokumenta")
+	@Column(name = "vrsta_dokumenta")
 	private VrstaDokumenta vrstaDokumenta;
 
 	public Long getId() {

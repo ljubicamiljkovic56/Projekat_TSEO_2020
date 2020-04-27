@@ -13,7 +13,7 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "korisnickoIme")
+	@Column(name = "korisnicko_ime")
 	private String korisnickoIme;
 	
 	@Column(name = "lozinka")
@@ -24,9 +24,9 @@ public class Admin {
 	
 	@Column(name = "prezime")
 	private String prezime;
-	
-	@Column(name = "uloga")
-	private Uloga uloga = Uloga.admin;
+//	
+//	@Column(name = "uloga")
+//	private Uloga uloga = Uloga.admin;
 
 	public Long getId() {
 		return id;

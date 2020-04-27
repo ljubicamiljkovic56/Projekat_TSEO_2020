@@ -31,28 +31,28 @@ public class Ispit {
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	private IspitPeriod ispitPeriod;
 	
-	@Column(name = "nazivPredmeta")
+	@Column(name = "naziv_predmeta")
 	private String nazivPredmeta;
 	
-	@Column(name = "brojBodova")
+	@Column(name = "broj_bodova")
 	private double brojBodova;
 	
-	@Column(name = "kolokvijumBodovi")
+	@Column(name = "kolokvijum_bodovi")
 	private double kolokvijumBodovi;
 	
-	@Column(name = "imeStudenta")
+	@Column(name = "ime_studenta")
 	private String imeStudenta;
 	
-	@Column(name = "prezimeStudenta")
+	@Column(name = "prezime_studenta")
 	private String prezimeStudenta;
 	
-	@Column(name = "imeProfesora")
+	@Column(name = "ime_profesora")
 	private String imeProfesora;
 	
-	@Column(name = "prezimeProfesora")
+	@Column(name = "prezime_profesora")
 	private String prezimeProfesora;
 	
-	@Column(name = "pObavezeBodovi")
+	@Column(name = "p_obaveze_bodovi")
 	private double pObavezeBodovi;
 	
 	@Column(name = "ocena")
