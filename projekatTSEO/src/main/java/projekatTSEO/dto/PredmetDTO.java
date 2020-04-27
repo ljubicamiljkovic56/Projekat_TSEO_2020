@@ -5,7 +5,7 @@ import projekatTSEO.model.Predmet;
 
 public class PredmetDTO {
 	
-	private int id;
+	private Long id;
 	
 	private String naziv;
 	
@@ -20,7 +20,7 @@ public class PredmetDTO {
 	}
 	
 
-	public PredmetDTO(int id, String naziv, int bodovi) {
+	public PredmetDTO(Long id, String naziv, int bodovi) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
@@ -29,11 +29,11 @@ public class PredmetDTO {
 
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -16,7 +16,6 @@ import projekatTSEO.dto.PredmetDTO;
 import projekatTSEO.model.Predmet;
 import projekatTSEO.service.PredmetService;
 
-
 @RestController
 @RequestMapping(value = "api/predmeti")
 public class PredmetController {
@@ -38,7 +37,7 @@ public class PredmetController {
 	
 	//nadji predmete po id-u
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<PredmetDTO> getPredmet(@PathVariable int id){
+	public ResponseEntity<PredmetDTO> getPredmet(@PathVariable Long id){
 		Predmet predmet = predmetService.findOne(id);
 		if(predmet == null){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -60,7 +59,7 @@ public class PredmetController {
 	
 	//izmeni predmet
 	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
-	public ResponseEntity<PredmetDTO> updateCourse(@RequestBody PredmetDTO predmetDTO){
+	public ResponseEntity<PredmetDTO> updatePredmet(@RequestBody PredmetDTO predmetDTO){
 		Predmet predmet = predmetService.findOne(predmetDTO.getId()); 
 		if (predmet == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -74,7 +73,7 @@ public class PredmetController {
 	
 	//obrisi predmet
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public ResponseEntity<Void> deletePredmet(@PathVariable int id){
+	public ResponseEntity<Void> deletePredmet(@PathVariable Long id){
 		Predmet predmet = predmetService.findOne(id);
 		if (predmet != null){
 			predmetService.remove(id);

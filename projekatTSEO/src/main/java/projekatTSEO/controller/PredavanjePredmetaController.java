@@ -42,7 +42,7 @@ public class PredavanjePredmetaController {
 	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<PredavanjePredmetaDTO> getOne(@PathVariable int id){
+	public ResponseEntity<PredavanjePredmetaDTO> getOne(@PathVariable Long id){
 		PredavanjePredmeta predavanje = pPService.findOne(id);
 		if(predavanje == null)
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -55,7 +55,7 @@ public class PredavanjePredmetaController {
 	public ResponseEntity<PredavanjePredmetaDTO> savePredavanje(@RequestBody PredavanjePredmetaDTO pp) {
 		PredavanjePredmeta predavanje = mapper.map(pp, PredavanjePredmeta.class);
 		PredavanjePredmeta novo = pPService.save(predavanje);
-		PredavanjePredmetaDTO pDTO = pp;//mapper.map(novo, PredavanjePredmetaDTO.class);
+		PredavanjePredmetaDTO pDTO = mapper.map(novo, PredavanjePredmetaDTO.class); //pp
 		return new ResponseEntity<PredavanjePredmetaDTO>(pDTO, HttpStatus.CREATED);
 	}
 	
@@ -71,7 +71,7 @@ public class PredavanjePredmetaController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deletePredavanje(@PathVariable int id){
+	public ResponseEntity<Void> deletePredavanje(@PathVariable Long id){
 		PredavanjePredmeta predavanje = pPService.findOne(id);
 		if(predavanje != null) {
 			pPService.remove(id);

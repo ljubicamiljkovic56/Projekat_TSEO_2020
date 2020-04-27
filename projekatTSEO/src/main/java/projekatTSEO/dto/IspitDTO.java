@@ -18,7 +18,7 @@ public class IspitDTO {
 	
 	private IspitPeriodDTO ispitPeriod;
 	
-	private Date date;
+	private Date datum;
 	
 	private String imeStudenta;
 	
@@ -40,7 +40,7 @@ public class IspitDTO {
 		id = ispit.getId();
 		brojBodova = ispit.getBrojBodova();
 		pObavezeBodovi = ispit.getPObavezeBodovi();
-		date = ispit.getDate();
+		datum = ispit.getDatum();
 		predmet = new PredmetDTO(ispit.getPredmet());
 		student = new StudentDTO(ispit.getStudent());
 		ispitPeriod = new IspitPeriodDTO(ispit.getIspitPeriod());
@@ -69,18 +69,18 @@ public class IspitDTO {
 		this.pObavezeBodovi = pObavezeBodovi;
 	}
 	
-	public Date getDate() {
-		return date;
+	public Date getDatum() {
+		return datum;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(Date datum) {
+		this.datum = datum;
 	}
 	
 	public PredmetDTO getPredmet() {
 		return predmet;
 	}
 
-	public void setPredmet(PredmetDTO predmeta) {
+	public void setPredmet(PredmetDTO predmet) {
 		this.predmet = predmet;
 	}
 	

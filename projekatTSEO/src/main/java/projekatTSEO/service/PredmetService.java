@@ -17,7 +17,7 @@ public class PredmetService {
 	@Autowired
 	PredmetRepository predmetRepository;
 	
-	public Predmet findOne(int id) {
+	public Predmet findOne(Long id) {
 		return predmetRepository.findById(id).orElse(null);
 	}
 
@@ -33,7 +33,7 @@ public class PredmetService {
 		return predmetRepository.save(predmet);
 	}
 
-	public void remove(int id) {
+	public void remove(Long id) {
 		predmetRepository.deleteById(id);
 	}
 }

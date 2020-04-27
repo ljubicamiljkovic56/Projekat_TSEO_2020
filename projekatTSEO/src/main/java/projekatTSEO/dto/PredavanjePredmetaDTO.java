@@ -2,11 +2,10 @@ package projekatTSEO.dto;
 
 import java.util.ArrayList;
 
-import projekatTSEO.model.PredavanjePredmeta;
 
 public class PredavanjePredmetaDTO {
 	
-	private int id;
+	private Long id;
 	private PredmetDTO predmet;
 	private ArrayList<ProfesorDTO> profesori;
 	
@@ -18,7 +17,7 @@ public class PredavanjePredmetaDTO {
 	 */
 
 
-	public PredavanjePredmetaDTO(int id, PredmetDTO predmet, ArrayList<ProfesorDTO> profesori) {
+	public PredavanjePredmetaDTO(Long id, PredmetDTO predmet, ArrayList<ProfesorDTO> profesori) {
 		super();
 		this.id = id;
 		this.predmet = predmet;
@@ -26,15 +25,14 @@ public class PredavanjePredmetaDTO {
 	}
 	
 	
-	public PredavanjePredmetaDTO() {	}
-	
-	
+	public PredavanjePredmetaDTO() {	
+		
+	}
 
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public PredmetDTO getPredmet() {

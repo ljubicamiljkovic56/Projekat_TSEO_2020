@@ -13,25 +13,31 @@ import javax.persistence.Id;
 public class PohadjanjePredmeta {
 
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Date startDate;
+	@Column(name = "pocetak")
+	private Date pocetak;
 	
-	private Date endDate;
+	@Column(name = "kraj")
+	private Date kraj;
 	
-	@Column
+	@Column(name = "predmet")
 	private Predmet predmet;
 	
-	@Column
+	@Column(name = "predavaci")
 	private ArrayList<Profesor> predavaci;
 	
-	@Column
+	@Column(name = "studenti")
 	private ArrayList<Student> studenti;
 
-	public PohadjanjePredmeta(Long id, Predmet predmet, ArrayList<Profesor> predavaci, ArrayList<Student> studenti) {
+	public PohadjanjePredmeta(Long id, Date pocetak, Date kraj, Predmet predmet, ArrayList<Profesor> predavaci,
+			ArrayList<Student> studenti) {
 		super();
 		this.id = id;
+		this.pocetak = pocetak;
+		this.kraj = kraj;
 		this.predmet = predmet;
 		this.predavaci = predavaci;
 		this.studenti = studenti;
@@ -49,20 +55,20 @@ public class PohadjanjePredmeta {
 		this.id = id;
 	}
 	
-	public Date getStartDate() {
-		return startDate;
+	public Date getPocetak() {
+		return pocetak;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setPocetak(Date pocetak) {
+		this.pocetak = pocetak;
 	}
 
-	public Date getEndDate() {
-		return endDate;
+	public Date getKraj() {
+		return kraj;
 	}
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setKraj(Date kraj) {
+		this.kraj = kraj;
 	}
 
 	public Predmet getPredmet() {

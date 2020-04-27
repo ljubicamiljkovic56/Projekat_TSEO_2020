@@ -11,9 +11,8 @@ import javax.persistence.Id;
 public class Predmet {
 	
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@Column(name = "naziv")
 	private String naziv;
@@ -22,11 +21,11 @@ public class Predmet {
 	private int bodovi;
 	
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

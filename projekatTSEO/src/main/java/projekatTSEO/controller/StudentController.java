@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import projekatTSEO.model.Uloga;
 import projekatTSEO.model.Ispit;
 import projekatTSEO.model.PohadjanjePredmeta;
 import projekatTSEO.model.Student;
@@ -29,14 +28,14 @@ import projekatTSEO.dto.StudentDTO;
 
 
 @RestController
-@RequestMapping(value="api/students")
-
+@RequestMapping(value="api/studenti")
 public class StudentController {
+	
 	@Autowired
 	private StudentService studentService;
 	
 	@RequestMapping(value="/all", method = RequestMethod.GET)
-	public ResponseEntity<List<StudentDTO>> getAllStudents() {
+	public ResponseEntity<List<StudentDTO>> getStudenti() {
 		List<Student> students = studentService.findAll();
 		//convertuje studente u DTO
 		List<StudentDTO> studentsDTO = new ArrayList<>();
@@ -131,7 +130,7 @@ public class StudentController {
 	}	
 	
 	@RequestMapping(value = "/{studentId}/courses", method = RequestMethod.GET)
-	public ResponseEntity<List<PohadjanjePredmetaDTO>> getStudentCourses(
+	public ResponseEntity<List<PohadjanjePredmetaDTO>> getStudentoviPredmeti(
 			@PathVariable Long studentId) {
 		Student student = studentService.findOne(studentId);
 		Set<PohadjanjePredmeta> pohadjanjePredmeta = student.getPohadjanjePredmeta();
@@ -139,8 +138,8 @@ public class StudentController {
 		for (PohadjanjePredmeta pp: pohadjanjePredmeta) {
 			PohadjanjePredmetaDTO pohadjanjePredmetaDTO = new PohadjanjePredmetaDTO();
 			pohadjanjePredmetaDTO.setId(pp.getId());
-			pohadjanjePredmetaDTO.setStartDate(pp.getStartDate());
-			pohadjanjePredmetaDTO.setEndDate(pp.getEndDate());
+			pohadjanjePredmetaDTO.setPocetak(pp.getPocetak());
+			pohadjanjePredmetaDTO.setKraj(pp.getKraj());
 			pohadjanjePredmetaDTO.setPredmet(new PredmetDTO(pp.getPredmet()));
 			//ostavljamo studentsko poilje prazno
 			
@@ -160,7 +159,7 @@ public class StudentController {
 			ispitDTO.setId(i.getId());
 			ispitDTO.setBrojBodova(i.getBrojBodova());
 			ispitDTO.setPObavezeBodovi(i.getPObavezeBodovi());
-			ispitDTO.setDate(i.getDate());
+			ispitDTO.setDate(i.getDatum());
 			ispitDTO.setPredmet(new PredmetDTO(i.getPredmet()));
 			ispitDTO.setIspitPeriod(new IspitPeriodDTO(i.getIspitPeriod()));
 		

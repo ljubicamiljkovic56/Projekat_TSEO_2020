@@ -18,7 +18,7 @@ public class ProfesorService {
 	@Autowired
 	ProfesorRepository profesorRepository;
 	
-	public Profesor findOne(int id) {
+	public Profesor findOne(Long id) {
 		return profesorRepository.findById(id).orElse(null);
 	}
 
@@ -34,7 +34,7 @@ public class ProfesorService {
 		return profesorRepository.save(profesor);
 	}
 
-	public void remove(int id) {
+	public void remove(Long id) {
 		profesorRepository.deleteById(id);
 	}
 }

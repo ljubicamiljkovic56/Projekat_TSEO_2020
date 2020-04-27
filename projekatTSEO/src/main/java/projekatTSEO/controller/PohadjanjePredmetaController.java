@@ -25,7 +25,7 @@ public class PohadjanjePredmetaController {
 	PohadjanjePredmetaService ppS;
 	
 	@Autowired
-	ModelMapper mapper;
+	private ModelMapper mapper;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<PohadjanjePredmetaDTO>> getPohadjanjePredmeta(){

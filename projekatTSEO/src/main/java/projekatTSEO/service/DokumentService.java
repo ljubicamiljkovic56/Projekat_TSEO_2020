@@ -16,8 +16,8 @@ public class DokumentService {
 	@Autowired
 	DokumentRepository dokumentRepository;
 	
-	public Dokument findOne(int id) {
-		return dokumentRepository.findById(id);
+	public Dokument findOne(Long id) {
+		return dokumentRepository.findById(id).orElse(null);
 	}
 
 	public List<Dokument> findAll() {
@@ -32,7 +32,7 @@ public class DokumentService {
 		return dokumentRepository.save(dokument);
 	}
 
-	public void remove(int id) {
+	public void remove(Long id) {
 		dokumentRepository.deleteById(id);
 	}
 }

@@ -12,8 +12,9 @@ import javax.persistence.Id;
 public class PredavanjePredmeta {
 	
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@Column(name = "predmet")
 	private Predmet predmet;
@@ -23,19 +24,18 @@ public class PredavanjePredmeta {
 
 	
 	
-	
-	public PredavanjePredmeta(int id, Predmet predmet, ArrayList<Profesor> profesori) {
+	public PredavanjePredmeta(Long id, Predmet predmet, ArrayList<Profesor> profesori) {
 		super();
 		this.id = id;
 		this.predmet = predmet;
 		this.profesori = profesori;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

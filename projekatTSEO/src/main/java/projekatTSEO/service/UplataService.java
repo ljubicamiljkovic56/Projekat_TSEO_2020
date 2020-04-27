@@ -16,8 +16,8 @@ public class UplataService {
 	@Autowired
 	UplataRepository uplataRepository;
 	
-	public Uplata findOne(int id) {
-		return uplataRepository.findById(id);
+	public Uplata findOne(Long id) {
+		return uplataRepository.findById(id).orElse(null);
 	}
 
 	public List<Uplata> findAll() {
@@ -32,7 +32,7 @@ public class UplataService {
 		return uplataRepository.save(uplata);
 	}
 
-	public void remove(int id) {
+	public void remove(Long id) {
 		uplataRepository.deleteById(id);
 	}
 }

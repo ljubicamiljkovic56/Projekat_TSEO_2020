@@ -17,7 +17,7 @@ public class PredavanjePredmetaService {
 	@Autowired
 	PredavanjePredmetaRepository predavanjePredmetaRepository;
 	
-	public PredavanjePredmeta findOne(int id) {
+	public PredavanjePredmeta findOne(Long id) {
 		return predavanjePredmetaRepository.findById(id).orElse(null);
 	}
 	
@@ -33,7 +33,7 @@ public class PredavanjePredmetaService {
 		return predavanjePredmetaRepository.save(pp);
 	}
 	
-	public void remove(int id) {
+	public void remove(Long id) {
 		predavanjePredmetaRepository.deleteById(id);
 	}
 	

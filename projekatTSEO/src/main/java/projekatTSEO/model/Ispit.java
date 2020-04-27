@@ -1,7 +1,5 @@
 package projekatTSEO.model;
 
-import java.util.ArrayList;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,11 +15,11 @@ import java.util.Date;
 public class Ispit {
 
 	@Id
-	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Date date;
+	@Column(name = "datum")
+	private Date datum;
 	
 	
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
@@ -68,12 +66,12 @@ public class Ispit {
 		this.id = id;
 	}
 	
-	public Date getDate() {
-		return date;
+	public Date getDatum() {
+		return datum;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDatum(Date datum) {
+		this.datum = datum;
 	}
 	
 	public Predmet getPredmet() {

@@ -1,9 +1,6 @@
 package projekatTSEO.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +18,7 @@ import projekatTSEO.model.Student;
 import projekatTSEO.service.IspitService;
 import projekatTSEO.service.IspitPeriodService;
 import projekatTSEO.dto.IspitDTO;
-import projekatTSEO.dto.IspitPeriodDTO;
-import projekatTSEO.dto.PredmetDTO;
+
 import projekatTSEO.service.StudentService;
 import projekatTSEO.service.PredmetService;
 
@@ -59,7 +55,7 @@ public class IspitController {
 		}
 
 		Ispit ispit = new Ispit();
-		ispit.setDate(ispitDTO.getDate());
+		ispit.setDatum(ispitDTO.getDatum());
 		ispit.setBrojBodova(ispitDTO.getBrojBodova());
 		ispit.setPObavezeBodovi(ispitDTO.getPObavezeBodovi());
 		ispit.setStudent(student);
@@ -78,7 +74,7 @@ public class IspitController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		// promena datuma i bodova na ispitu
-		ispit.setDate(ispitDTO.getDate());
+		ispit.setDatum(ispitDTO.getDatum());
 		ispit.setBrojBodova(ispitDTO.getBrojBodova());
 		ispit.setPObavezeBodovi(ispitDTO.getPObavezeBodovi());
 
@@ -96,13 +92,5 @@ public class IspitController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-
-	
-	
-	
-	
-	
-	
-	
 	
 }

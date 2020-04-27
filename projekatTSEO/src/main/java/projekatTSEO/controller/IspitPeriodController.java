@@ -25,14 +25,14 @@ import projekatTSEO.dto.StudentDTO;
 
 
 @RestController
-@RequestMapping(value="api/examPeriods")
+@RequestMapping(value="api/ispitiPeriod")
 public class IspitPeriodController {
 	
 	@Autowired
 	private IspitPeriodService ispitPeriodService;
 	
 	@RequestMapping(value="/all", method = RequestMethod.GET)
-	public ResponseEntity<List<IspitPeriodDTO>> getAllIspitPeriods() {
+	public ResponseEntity<List<IspitPeriodDTO>> getAllIspitPeriod() {
 		List<IspitPeriod> ispitPeriods = ispitPeriodService.findAll();
 		//konvertovanje ispitPerioda u DTO
 		List<IspitPeriodDTO> ispitPeriodsDTO = new ArrayList<>();
@@ -44,7 +44,7 @@ public class IspitPeriodController {
 	
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<IspitPeriodDTO>> getIspitPeriodsPage(Pageable page) {
+	public ResponseEntity<List<IspitPeriodDTO>> getIspitPeriodPage(Pageable page) {
 		//page object holds data about pagination and sorting
 		//the object is created based on the url parameters "page", "size" and "sort" 
 		Page<IspitPeriod> ispitPeriods = ispitPeriodService.findAll(page);
@@ -71,32 +71,32 @@ public class IspitPeriodController {
 	public ResponseEntity<IspitPeriodDTO> saveIspitPeriod(@RequestBody IspitPeriodDTO ispitPeriodDTO){
 		IspitPeriod ispitPeriod = new IspitPeriod();
 		
-		ispitPeriod.setIme(ispitPeriodDTO.getIme());
-		ispitPeriod.setStartDate(ispitPeriodDTO.getStartDate());
-		ispitPeriod.setEndDate(ispitPeriodDTO.getEndDate());
+		ispitPeriod.setNaziv(ispitPeriodDTO.getNaziv());
+		ispitPeriod.setPocetakRoka(ispitPeriodDTO.getPocetakRoka());
+		ispitPeriod.setKrajRoka(ispitPeriodDTO.getKrajRoka());
 		
 		ispitPeriod = ispitPeriodService.save(ispitPeriod);
 		return new ResponseEntity<>(new IspitPeriodDTO(ispitPeriod), HttpStatus.CREATED);	
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, consumes="application/json")
-	public ResponseEntity<IspitPeriodDTO> updateExamPeriod(@RequestBody IspitPeriodDTO ispitPeriodDTO){
+	public ResponseEntity<IspitPeriodDTO> updateIspitPeriod(@RequestBody IspitPeriodDTO ispitPeriodDTO){
 		// ispitPeriod mora postojati
 		IspitPeriod ispitPeriod = ispitPeriodService.findOne(ispitPeriodDTO.getId()); 
 		if (ispitPeriod == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		
-		ispitPeriod.setIme(ispitPeriodDTO.getIme());
-		ispitPeriod.setStartDate(ispitPeriodDTO.getStartDate());
-		ispitPeriod.setEndDate(ispitPeriodDTO.getEndDate());
+		ispitPeriod.setNaziv(ispitPeriodDTO.getNaziv());
+		ispitPeriod.setPocetakRoka(ispitPeriodDTO.getPocetakRoka());
+		ispitPeriod.setKrajRoka(ispitPeriodDTO.getKrajRoka());
 		
 		ispitPeriod = ispitPeriodService.save(ispitPeriod);
 		return new ResponseEntity<>(new IspitPeriodDTO(ispitPeriod), HttpStatus.OK);	
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteExamPeriod(@PathVariable Long id){
+	public ResponseEntity<Void> deleteIspitPeriod(@PathVariable Long id){
 		IspitPeriod ispitPeriod = ispitPeriodService.findOne(id);
 		if (ispitPeriod != null){
 			ispitPeriodService.remove(id);
@@ -117,7 +117,7 @@ public class IspitPeriodController {
 			ispitDTO.setId(e.getId());
 			ispitDTO.setBrojBodova(e.getBrojBodova());
 			ispitDTO.setPObavezeBodovi(e.getPObavezeBodovi());
-			ispitDTO.setDate(e.getDate());
+			ispitDTO.setDate(e.getDatum());
 			ispitDTO.setPredmet(new PredmetDTO(e.getPredmet()));
 			ispitDTO.setStudent(new StudentDTO(e.getStudent()));
 		

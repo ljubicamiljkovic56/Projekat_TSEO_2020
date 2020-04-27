@@ -25,10 +25,10 @@ public class ProfesorController {
 	private ProfesorService profesorService;
 	
 	@Autowired
-	private ModelMapper mapper;
+	public ModelMapper mapper;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<ProfesorDTO>> getAll(){
+	public ResponseEntity<List<ProfesorDTO>> getProfesori(){
 		List<ProfesorDTO> profesoriDTO = new ArrayList<ProfesorDTO>();
 		ProfesorDTO pDTO;
 		List<Profesor> profesori = profesorService.findAll();
@@ -41,7 +41,7 @@ public class ProfesorController {
 	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<ProfesorDTO> getOne(@PathVariable int id){
+	public ResponseEntity<ProfesorDTO> getProfesor(@PathVariable Long id){
 		Profesor p = profesorService.findOne(id);
 		if(p == null)
 			return new ResponseEntity<ProfesorDTO>(HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ public class ProfesorController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteProfesor(@PathVariable int id) {
+	public ResponseEntity<Void> deleteProfesor(@PathVariable Long id) {
 		Profesor p = profesorService.findOne(id);
 		if(p != null) {
 			profesorService.remove(id);
@@ -77,12 +77,5 @@ public class ProfesorController {
 			return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 }

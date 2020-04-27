@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,15 +16,19 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class IspitPeriod {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String ime;
+	@Column(name = "naziv")
+	private String naziv;
 	
-	private Date startDate;
+	@Column(name = "pocetak_roka")
+	private Date pocetakRoka;
 	
-	private Date endDate;
+	@Column(name = "kraj_roka")
+	private Date krajRoka;
 	
 	@OneToMany(mappedBy = "ispitPeriod", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	private Set<Ispit> ispiti = new HashSet<Ispit>();
@@ -36,28 +41,28 @@ public class IspitPeriod {
 		this.id = id;
 	}
 
-	public String getIme() {
-		return ime;
+	public String getNaziv() {
+		return naziv;
 	}
 
-	public void setIme(String ime) {
-		this.ime = ime;
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public Date getPocetakRoka() {
+		return pocetakRoka;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setPocetakRoka(Date pocetakRoka) {
+		this.pocetakRoka = pocetakRoka;
 	}
 
-	public Date getEndDate() {
-		return endDate;
+	public Date getKrajRoka() {
+		return krajRoka;
 	}
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setKrajRoka(Date krajRoka) {
+		this.krajRoka = krajRoka;
 	}
 	
 	public Set<Ispit> getIspiti() {
@@ -90,8 +95,9 @@ public class IspitPeriod {
 
 	@Override
 	public String toString() {
-		return "IspitPeriod [id=" + id + ", name=" + ime + ", startDate="
-				+ startDate + ", endDate=" + endDate + "]";
+		return "IspitPeriod [id=" + id + ", naziv=" + naziv + ", pocetakRoka=" + pocetakRoka + ", krajRoka=" + krajRoka
+				+ ", ispiti=" + ispiti + "]";
 	}
+
 
 }

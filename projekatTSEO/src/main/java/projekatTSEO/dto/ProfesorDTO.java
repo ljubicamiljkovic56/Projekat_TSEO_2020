@@ -4,7 +4,7 @@ import projekatTSEO.model.Profesor;
 
 public class ProfesorDTO {
 	
-	private int id;
+	private Long id;
 	
 	private String ime;
 	
@@ -18,18 +18,18 @@ public class ProfesorDTO {
 		this(profesor.getId(), profesor.getIme(), profesor.getPrezime());
 	}
 
-	public ProfesorDTO(int id, String ime, String prezime) {
+	public ProfesorDTO(Long id, String ime, String prezime) {
 		super();
 		this.id = id;
 		this.ime = ime;
 		this.prezime = prezime;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

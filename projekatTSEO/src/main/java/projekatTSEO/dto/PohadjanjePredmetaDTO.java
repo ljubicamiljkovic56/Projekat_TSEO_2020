@@ -2,26 +2,29 @@ package projekatTSEO.dto;
 
 import java.util.ArrayList;
 import java.util.Date;
-import projekatTSEO.model.PohadjanjePredmeta;
 
 public class PohadjanjePredmetaDTO {
 
 	private Long id;
 	private ArrayList<ProfesorDTO> predavaci;
 	private ArrayList<StudentDTO> studenti;
-	private Date startDate;
-	private Date endDate;
+	private Date pocetak;
+	private Date kraj;
 	private PredmetDTO predmet;
 	
 	
-	public PohadjanjePredmetaDTO(Long id, ArrayList<ProfesorDTO> predavaci, ArrayList<StudentDTO> studenti, PredmetDTO predmet) {
+	public PohadjanjePredmetaDTO(Long id, ArrayList<ProfesorDTO> predavaci, ArrayList<StudentDTO> studenti,
+			Date pocetak, Date kraj, PredmetDTO predmet) {
 		super();
 		this.id = id;
 		this.predavaci = predavaci;
 		this.studenti = studenti;
+		this.pocetak = pocetak;
+		this.kraj = kraj;
 		this.predmet = predmet;
 	}
-	
+
+
 	public PohadjanjePredmetaDTO() {
 		super();
 	}
@@ -41,19 +44,26 @@ public class PohadjanjePredmetaDTO {
 		this.predmet = predmet;
 	}	
 	
-	public Date getStartDate() {
-		return startDate;
+	public Date getPocetak() {
+		return pocetak;
 	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+
+
+	public void setPocetak(Date pocetak) {
+		this.pocetak = pocetak;
 	}
-	public Date getEndDate() {
-		return endDate;
+
+
+	public Date getKraj() {
+		return kraj;
 	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+
+
+	public void setKraj(Date kraj) {
+		this.kraj = kraj;
 	}
-	
+
+
 	public ArrayList<ProfesorDTO> getPredavaci() {
 		return predavaci;
 	}

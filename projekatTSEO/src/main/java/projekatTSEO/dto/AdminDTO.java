@@ -4,7 +4,7 @@ import projekatTSEO.model.Admin;
 
 public class AdminDTO {
 	
-	private int id;
+	private Long id;
 	
 	private String ime;
 	
@@ -19,18 +19,18 @@ public class AdminDTO {
 	}
 	
 	
-	public AdminDTO(int id, String ime, String prezime) {
+	public AdminDTO(Long id, String ime, String prezime) {
 		super();
 		this.id = id;
 		this.ime = ime;
 		this.prezime = prezime;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
