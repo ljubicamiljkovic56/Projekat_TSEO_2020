@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import projekatTSEO.model.Ispit;
-import projekatTSEO.model.PohadjanjePredmeta;
-import projekatTSEO.model.Student;
 import projekatTSEO.service.StudentService;
 import projekatTSEO.dto.PredmetDTO;
+import projekatTSEO.app.model.Ispit;
+import projekatTSEO.app.model.PohadjanjePredmeta;
+import projekatTSEO.app.model.Student;
 import projekatTSEO.dto.IspitDTO;
 import projekatTSEO.dto.IspitPeriodDTO;
 import projekatTSEO.dto.PohadjanjePredmetaDTO;

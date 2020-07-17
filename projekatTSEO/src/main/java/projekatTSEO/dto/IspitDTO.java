@@ -1,7 +1,8 @@
 package projekatTSEO.dto;
 
 import java.util.Date;
-import projekatTSEO.model.Ispit;
+
+import projekatTSEO.app.model.Ispit;
 
 
 public class IspitDTO {

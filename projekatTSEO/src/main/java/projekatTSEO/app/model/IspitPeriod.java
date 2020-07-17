@@ -1,4 +1,4 @@
-package projekatTSEO.model;
+package projekatTSEO.app.model;
 
 import java.util.Date;
 import java.util.HashSet;

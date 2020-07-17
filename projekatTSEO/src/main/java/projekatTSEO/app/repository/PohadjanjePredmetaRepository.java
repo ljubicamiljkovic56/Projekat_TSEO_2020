@@ -1,13 +1,13 @@
-package projekatTSEO.repository;
+package projekatTSEO.app.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import projekatTSEO.model.PohadjanjePredmeta;
-import projekatTSEO.model.Predmet;
-import projekatTSEO.model.Profesor;
-import projekatTSEO.model.Student;
+import projekatTSEO.app.model.PohadjanjePredmeta;
+import projekatTSEO.app.model.Predmet;
+import projekatTSEO.app.model.Profesor;
+import projekatTSEO.app.model.Student;
 
 public interface PohadjanjePredmetaRepository extends JpaRepository<PohadjanjePredmeta, Long>{
 

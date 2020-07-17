@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import projekatTSEO.app.model.Predmet;
 import projekatTSEO.dto.PredmetDTO;
-import projekatTSEO.model.Predmet;
 import projekatTSEO.service.PredmetService;
 
 @RestController

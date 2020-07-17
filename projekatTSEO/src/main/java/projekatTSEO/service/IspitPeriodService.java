@@ -7,8 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import projekatTSEO.model.IspitPeriod;
-import projekatTSEO.repository.IspitPeriodRepository; 
+import projekatTSEO.app.model.IspitPeriod;
+import projekatTSEO.app.repository.IspitPeriodRepository; 
 
 @Service
 public class IspitPeriodService {

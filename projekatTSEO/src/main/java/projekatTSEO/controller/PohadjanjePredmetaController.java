@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import projekatTSEO.app.model.PohadjanjePredmeta;
 import projekatTSEO.dto.PohadjanjePredmetaDTO;
-import projekatTSEO.model.PohadjanjePredmeta;
 import projekatTSEO.service.PohadjanjePredmetaService;
 
 @RestController

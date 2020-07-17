@@ -7,8 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import projekatTSEO.model.Dokument;
-import projekatTSEO.repository.DokumentRepository;
+import projekatTSEO.app.model.Dokument;
+import projekatTSEO.app.repository.DokumentRepository;
 
 @Service
 public class DokumentService {

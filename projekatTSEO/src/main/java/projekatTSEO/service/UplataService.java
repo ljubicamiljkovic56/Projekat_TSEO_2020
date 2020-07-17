@@ -7,8 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import projekatTSEO.model.Uplata;
-import projekatTSEO.repository.UplataRepository;
+import projekatTSEO.app.model.Uplata;
+import projekatTSEO.app.repository.UplataRepository;
 
 @Service
 public class UplataService {

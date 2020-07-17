@@ -1,8 +1,8 @@
-package projekatTSEO.repository;
+package projekatTSEO.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import projekatTSEO.model.Predmet;
+import projekatTSEO.app.model.Predmet;
 
 public interface PredmetRepository extends JpaRepository<Predmet, Long> {
 	

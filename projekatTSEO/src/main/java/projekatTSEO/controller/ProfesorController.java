@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import projekatTSEO.app.model.Profesor;
 import projekatTSEO.dto.ProfesorDTO;
-import projekatTSEO.model.Profesor;
 import projekatTSEO.service.ProfesorService;
 
 @RestController

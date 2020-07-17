@@ -17,10 +17,10 @@ function login(){
 		console.log(response);
 		alert('Uspesno ste se ulogovali');
 		
-		if(response == 'Admin'){
+		if(response == 'admin'){
 			window.location.href = 'admin.html';
 		}else {
-			window.location.href = 'regular.html';
+			window.location.href = 'student_main.html';
 		}
 	}
 	);

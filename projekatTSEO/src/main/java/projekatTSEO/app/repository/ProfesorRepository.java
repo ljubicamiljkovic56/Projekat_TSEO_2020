@@ -1,8 +1,8 @@
-package projekatTSEO.repository;
+package projekatTSEO.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import projekatTSEO.model.Profesor;
+import projekatTSEO.app.model.Profesor;
 
 public interface ProfesorRepository extends JpaRepository<Profesor, Long> {
 	

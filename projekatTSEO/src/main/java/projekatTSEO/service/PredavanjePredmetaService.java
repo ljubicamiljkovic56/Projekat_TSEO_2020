@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import projekatTSEO.model.PredavanjePredmeta;
-import projekatTSEO.model.Profesor;
-import projekatTSEO.repository.PredavanjePredmetaRepository;
+import projekatTSEO.app.model.PredavanjePredmeta;
+import projekatTSEO.app.model.Profesor;
+import projekatTSEO.app.repository.PredavanjePredmetaRepository;
 
 @Service
 public class PredavanjePredmetaService {

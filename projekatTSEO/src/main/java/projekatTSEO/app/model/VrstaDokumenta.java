@@ -1,4 +1,4 @@
-package projekatTSEO.model;
+package projekatTSEO.app.model;
 
 public enum VrstaDokumenta {
 

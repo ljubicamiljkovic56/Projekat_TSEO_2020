@@ -1,4 +1,4 @@
-package projekatTSEO.repository;
+package projekatTSEO.app.repository;
 
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;

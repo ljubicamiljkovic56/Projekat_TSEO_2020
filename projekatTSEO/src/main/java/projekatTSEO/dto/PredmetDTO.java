@@ -1,6 +1,6 @@
 package projekatTSEO.dto;
 
-import projekatTSEO.model.Predmet;
+import projekatTSEO.app.model.Predmet;
 
 
 public class PredmetDTO {

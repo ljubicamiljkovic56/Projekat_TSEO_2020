@@ -1,10 +1,10 @@
-package projekatTSEO.repository;
+package projekatTSEO.app.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import projekatTSEO.model.Uplata;
+import projekatTSEO.app.model.Uplata;
 
 public interface UplataRepository extends JpaRepository<Uplata, Long> {
 	

@@ -7,11 +7,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import projekatTSEO.model.PohadjanjePredmeta;
-import projekatTSEO.model.Predmet;
-import projekatTSEO.model.Profesor;
-import projekatTSEO.model.Student;
-import projekatTSEO.repository.PohadjanjePredmetaRepository;
+import projekatTSEO.app.model.PohadjanjePredmeta;
+import projekatTSEO.app.model.Predmet;
+import projekatTSEO.app.model.Profesor;
+import projekatTSEO.app.model.Student;
+import projekatTSEO.app.repository.PohadjanjePredmetaRepository;
 
 @Service
 public class PohadjanjePredmetaService {

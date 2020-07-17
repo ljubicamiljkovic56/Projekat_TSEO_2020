@@ -1,6 +1,6 @@
 package projekatTSEO.dto;
 
-import projekatTSEO.model.Admin;
+import projekatTSEO.app.model.Admin;
 
 public class AdminDTO {
 	

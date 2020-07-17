@@ -1,6 +1,6 @@
 package projekatTSEO.dto;
 
-import projekatTSEO.model.Student;
+import projekatTSEO.app.model.Student;
 
 public class StudentDTO {
 	

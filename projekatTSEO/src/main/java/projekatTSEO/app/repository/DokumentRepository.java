@@ -1,10 +1,10 @@
-package projekatTSEO.repository;
+package projekatTSEO.app.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import projekatTSEO.model.Dokument;
+import projekatTSEO.app.model.Dokument;
 
 public interface DokumentRepository extends JpaRepository<Dokument, Long> {
 

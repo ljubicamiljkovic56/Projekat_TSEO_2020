@@ -1,4 +1,4 @@
-package projekatTSEO.model;
+package projekatTSEO.app.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

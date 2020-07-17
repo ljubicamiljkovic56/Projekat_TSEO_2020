@@ -1,4 +1,4 @@
-package projekatTSEO.model;
+package projekatTSEO.app.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;

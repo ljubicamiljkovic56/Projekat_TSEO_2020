@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import projekatTSEO.model.Ispit;
-import projekatTSEO.model.IspitPeriod;
 import projekatTSEO.service.IspitPeriodService;
 import projekatTSEO.dto.PredmetDTO;
+import projekatTSEO.app.model.Ispit;
+import projekatTSEO.app.model.IspitPeriod;
 import projekatTSEO.dto.IspitDTO;
 import projekatTSEO.dto.IspitPeriodDTO;
 import projekatTSEO.dto.StudentDTO;

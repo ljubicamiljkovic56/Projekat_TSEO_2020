@@ -7,8 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import projekatTSEO.model.Student;
-import projekatTSEO.repository.StudentRepository;
+import projekatTSEO.app.model.Student;
+import projekatTSEO.app.repository.StudentRepository;
 @Service
 public class StudentService {
 	

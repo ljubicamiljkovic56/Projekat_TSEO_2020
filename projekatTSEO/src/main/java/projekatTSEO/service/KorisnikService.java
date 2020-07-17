@@ -3,8 +3,8 @@ package projekatTSEO.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import projekatTSEO.model.Korisnik;
-import projekatTSEO.repository.KorisnikRepository;
+import projekatTSEO.app.model.Korisnik;
+import projekatTSEO.app.repository.KorisnikRepository;
 
 @Service
 public class KorisnikService {
