@@ -1,6 +1,22 @@
-DROP schema IF EXISTS tseo;
-CREATE SCHEMA tseo DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE tseo;
+SET FOREIGN_KEY_CHECKS = 0
+
+
+TRUNCATE TABLE korisnikova_uloga;
+TRUNCATE TABLE uloga;
+TRUNCATE TABLE korisnik;
+TRUNCATE TABLE admin;
+TRUNCATE TABLE dokument;
+TRUNCATE TABLE ispit;
+TRUNCATE TABLE ispit_period;
+TRUNCATE TABLE pohadjanje_predmeta;
+TRUNCATE TABLE predavanje_predmeta;
+TRUNCATE TABLE predmet;
+TRUNCATE TABLE profesor;
+TRUNCATE TABLE student;
+TRUNCATE TABLE uplata;
+
+SET FOREIGN_KEY_CHECKS = 1
+
 
 INSERT INTO uloga (naziv) VALUES ('admin');
 INSERT INTO uloga (naziv) VALUES ('profesor');
