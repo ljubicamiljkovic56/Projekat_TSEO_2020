@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import projekatTSEO.app.model.Course;
-import projekatTSEO.app.model.CourseTeachers;
 import projekatTSEO.app.model.Teacher;
 import projekatTSEO.app.repository.TeachingRepository;
 

@@ -72,9 +72,8 @@ public class StudentController {
 	@RequestMapping(method=RequestMethod.POST, consumes="application/json")
 	public ResponseEntity<StudentDTO> saveStudent(@RequestBody StudentDTO studentDTO){
 		Student student = new Student();
-		student.setBrojIndeksa(studentDTO.getBrojIndeksa());
-		student.setIme(studentDTO.getIme());
-		student.setPrezime(studentDTO.getPrezime());
+		student.setName(studentDTO.getName());
+		student.setLastname(studentDTO.getLastname());
 		
 		student = studentService.save(student);
 		return new ResponseEntity<>(new StudentDTO(student), HttpStatus.CREATED);	
@@ -88,9 +87,9 @@ public class StudentController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		
-		student.setBrojIndeksa(studentDTO.getBrojIndeksa());
-		student.setIme(studentDTO.getIme());
-		student.setPrezime(studentDTO.getPrezime());
+		student.setCardNumber(studentDTO.getCardNumber());
+		student.setName(studentDTO.getName());
+		student.setLastname(studentDTO.getLastname());
 		
 		student = studentService.save(student);
 		return new ResponseEntity<>(new StudentDTO(student), HttpStatus.OK);	
@@ -107,20 +106,20 @@ public class StudentController {
 		}
 	}
 	
-	@RequestMapping(value="/findIndeks", method=RequestMethod.GET)
+	@RequestMapping(value="/findCardNumber", method=RequestMethod.GET)
 	public ResponseEntity<StudentDTO> getStudentByCard(
-			@RequestParam String brojIndeksa) {
-		Student student = studentService.findByCard(brojIndeksa);
+			@RequestParam String cardNumber) {
+		Student student = studentService.findByCard(cardNumber);
 		if(student == null){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}		
 		return new ResponseEntity<>(new StudentDTO(student), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/findPrezime", method = RequestMethod.GET)
+	@RequestMapping(value = "/findLastname", method = RequestMethod.GET)
 	public ResponseEntity<List<StudentDTO>> getStudentsByPrezime(
-			@RequestParam String prezime) {
-		List<Student> students = studentService.findByLastname(prezime);
+			@RequestParam String lastname) {
+		List<Student> students = studentService.findByLastname(lastname);
 		//convertuje studente u DTO
 		List<StudentDTO> studentsDTO = new ArrayList<>();
 		for (Student s : students) {
@@ -133,39 +132,39 @@ public class StudentController {
 	public ResponseEntity<List<EnrollmentDTO>> getStudentoviPredmeti(
 			@PathVariable Long studentId) {
 		Student student = studentService.findOne(studentId);
-		Set<Enrollment> pohadjanjePredmeta = student.getEnrollments();
-		List<EnrollmentDTO> pohadjanjePredmetaaDTO = new ArrayList<>();
-		for (Enrollment pp: pohadjanjePredmeta) {
+		Set<Enrollment> enrollments = student.getEnrollments();
+		List<EnrollmentDTO> enrollmentsDTO = new ArrayList<>();
+		for (Enrollment pp: enrollments) {
 			EnrollmentDTO enrollmentDTO = new EnrollmentDTO();
 			enrollmentDTO.setId(pp.getId());
-			enrollmentDTO.setPocetak(pp.getPocetak());
-			enrollmentDTO.setKraj(pp.getKraj());
-			enrollmentDTO.setPredmet(new CourseDTO(pp.getPredmet()));
+			enrollmentDTO.setStart(pp.getStart());
+			enrollmentDTO.setFinish(pp.getFinish());
+			enrollmentDTO.setCourse(new CourseDTO(pp.getCourse()));
 			//ostavljamo studentsko poilje prazno
 			
-			pohadjanjePredmetaaDTO.add(enrollmentDTO);
+			enrollmentsDTO.add(enrollmentDTO);
 		}
-		return new ResponseEntity<>(pohadjanjePredmetaaDTO, HttpStatus.OK);
+		return new ResponseEntity<>(enrollmentsDTO, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{studentId}/ispiti", method = RequestMethod.GET)
-	public ResponseEntity<List<ExamDTO>> getStudentIspiti(
+	@RequestMapping(value = "/{studentId}/exams", method = RequestMethod.GET)
+	public ResponseEntity<List<ExamDTO>> getStudentExams(
 			@PathVariable Long studentId) {
 		Student student = studentService.findOne(studentId);
-		Set<Exam> ispiti = student.getIspiti();
-		List<ExamDTO> ispitiDTO = new ArrayList<>();
-		for (Exam i: ispiti) {
+		Set<Exam> exams = student.getExams();
+		List<ExamDTO> examsDTO = new ArrayList<>();
+		for (Exam i: exams) {
 			ExamDTO examDTO = new ExamDTO();
 			examDTO.setId(i.getId());
-			examDTO.setBrojBodova(i.getBrojBodova());
-			examDTO.setPObavezeBodovi(i.getPObavezeBodovi());
-			examDTO.setDate(i.getDatum());
-			examDTO.setPredmet(new CourseDTO(i.getPredmet()));
-			examDTO.setIspitPeriod(new ExamPeriodDTO(i.getIspitPeriod()));
+			examDTO.setPoints(i.getPoints());
+			examDTO.setpObavezeBodovi(i.getpObavezeBodovi());
+			examDTO.setDate(i.getDate());
+			examDTO.setCourse(new CourseDTO(i.getCourse()));
+			examDTO.setExamPeriod(new ExamPeriodDTO(i.getExamPeriod()));
 		
-			ispitiDTO.add(examDTO);
+			examsDTO.add(examDTO);
 		}
-		return new ResponseEntity<>(ispitiDTO, HttpStatus.OK);
+		return new ResponseEntity<>(examsDTO, HttpStatus.OK);
 	}
 
 }
