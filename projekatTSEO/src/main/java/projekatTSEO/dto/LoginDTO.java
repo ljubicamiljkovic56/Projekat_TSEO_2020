@@ -2,21 +2,21 @@ package projekatTSEO.dto;
 
 public class LoginDTO {
 	
-	private String korisnickoIme;
+	private String username;
 	
-	private String lozinka;
+	private String password;
 	
-	public String getKorisnickoIme() {
-		return korisnickoIme;
+	public String getUsername() {
+		return username;
 	}
-	public void setKorisnickoIme(String korisnickoIme) {
-		this.korisnickoIme = korisnickoIme;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getLozinka() {
-		return lozinka;
+	public String getPassword() {
+		return password;
 	}
-	public void setLozinka(String lozinka) {
-		this.lozinka = lozinka;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

@@ -37,14 +37,14 @@ public class StudentService {
 	}
 	
 	public Student findByCard(String brojIndeksa) {
-		return studentRepository.findByBrojIndeksa(brojIndeksa);
+		return studentRepository.findByCardNumber(brojIndeksa);
 	}
 	
-	public List<Student> findByPrezime(String prezime) {
-		return studentRepository.findByPrezime(prezime);
+	public List<Student> findByLastname(String prezime) {
+		return studentRepository.findByLastname(prezime);
 	}
 	
-	public int izracunajOcenu(int poeni) {
+	public int calculateGrade(int poeni) {
 		if (poeni < 0 || poeni > 100)
 			throw new NumberFormatException();
 		

@@ -5,12 +5,9 @@ import projekatTSEO.app.model.Student;
 public class StudentDTO {
 	
 	private Long id;
-	
-	private String brojIndeksa;
-	
-	private String ime;
-	
-	private String prezime;
+	private String cardNumber;
+	private String name;
+	private String lastname;
 	
 	
 	public StudentDTO() {
@@ -18,15 +15,15 @@ public class StudentDTO {
 	}
 	
 	public StudentDTO(Student student) {
-		this(student.getId(), student.getBrojIndeksa(), student.getIme(), student.getPrezime());
+		this(student.getId(), student.getCardNumber(), student.getName(), student.getLastname());
 	}
 
-	public StudentDTO(Long id, String brojIndeksa, String ime, String prezime) {
+	public StudentDTO(Long id, String cardNumber, String name, String lastname) {
 		super();
 		this.id = id;
-		this.brojIndeksa = brojIndeksa;
-		this.ime = ime;
-		this.prezime = prezime;
+		this.cardNumber = cardNumber;
+		this.name = name;
+		this.lastname = lastname;
 	}
 
 	public Long getId() {
@@ -37,28 +34,28 @@ public class StudentDTO {
 		this.id = id;
 	}
 
-	public String getBrojIndeksa() {
-		return brojIndeksa;
+	public String getCardNumber() {
+		return cardNumber;
 	}
 
-	public void setBrojIndeksa(String brojIndeksa) {
-		this.brojIndeksa = brojIndeksa;
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 
-	public String getIme() {
-		return ime;
+	public String getName() {
+		return name;
 	}
 
-	public void setIme(String ime) {
-		this.ime = ime;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPrezime() {
-		return prezime;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setPrezime(String prezime) {
-		this.prezime = prezime;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	
 	

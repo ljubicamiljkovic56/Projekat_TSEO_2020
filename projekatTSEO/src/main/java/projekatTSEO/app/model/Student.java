@@ -11,7 +11,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 public class Student {
@@ -20,108 +24,58 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "korisnicko_ime")
-	private String korisnickoIme;
+	@Column(name="card_number", unique = true, nullable = false)
+	private String cardNumber;
+
+	private String name;
 	
-	@Column(name = "lozinka")
-	private String lozinka;
+	private String lastname;
 	
-	@Column(name = "ime")
-	private String ime; 
+	@OneToMany(mappedBy = "student_id", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private Set<Enrollment> enrollments = new HashSet<Enrollment>();
 	
-	@Column(name = "prezime")
-	private String prezime;
+	@ManyToMany
+    @JoinTable(name = "finished_courses",
+               joinColumns = @JoinColumn(name="student_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="course_id", referencedColumnName="id"))
+	private Set<Course> passed_courses = new HashSet<Course>();
 	
-	@Column(name = "uloga")
-	private Uloga uloga;
+	@ManyToMany
+    @JoinTable(name = "unfinished_courses",
+               joinColumns = @JoinColumn(name="student_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="course_id", referencedColumnName="id"))
+	private Set<Course> unfinished_courses = new HashSet<Course>();
 	
-	@Column(name = "broj_indeksa")
-	private String brojIndeksa;
+	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private Set<Document> documents = new HashSet<Document>();
 	
-	@Column(name = "pohadjanje_predmeta")
-	private Set<PohadjanjePredmeta> pohadjanjePredmeta;
-	
-	@Column(name = "polozeni_predmeti")
-	private ArrayList<Predmet> polozeniPredmeti;
-	
-	@Column(name = "nepolozeni_predmeti")
-	private ArrayList<Predmet> nepolozeniPredmeti;
-	
-	@Column(name = "dokumenta")
-	private ArrayList<Dokument> dokumenta;
-	
-	@Column(name = "uplate")
-	private ArrayList<Uplata> uplate;
+	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private Set<Payment> payments = new HashSet<Payment>();
 	
 	
 	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-	private Set<Ispit> ispiti = new HashSet<Ispit>();
+	private Set<Exam> exams = new HashSet<Exam>();
 
-	public String getBrojIndeksa() {
-		return brojIndeksa;
+
+	public Student(Long id, String cardNumber, String name, String lastname, Set<Enrollment> enrollments,
+			Set<Course> passed_courses, Set<Course> unfinished_courses, Set<Document> documents, Set<Payment> payments,
+			Set<Exam> exams) {
+		super();
+		this.id = id;
+		this.cardNumber = cardNumber;
+		this.name = name;
+		this.lastname = lastname;
+		this.enrollments = enrollments;
+		this.passed_courses = passed_courses;
+		this.unfinished_courses = unfinished_courses;
+		this.documents = documents;
+		this.payments = payments;
+		this.exams = exams;
 	}
 
 
-	public void setBrojIndeksa(String brojIndeksa) {
-		this.brojIndeksa = brojIndeksa;
-	}
-
-
-	public Set<PohadjanjePredmeta> getPohadjanjePredmeta() {
-		return pohadjanjePredmeta;
-	}
-
-
-	public void setPohadjanjePredmeta(Set<PohadjanjePredmeta> pohadjanjePredmeta) {
-		this.pohadjanjePredmeta = pohadjanjePredmeta;
-	}
-
-
-	public ArrayList<Predmet> getPolozeniPredmeti() {
-		return polozeniPredmeti;
-	}
-
-
-	public void setPolozeniPredmeti(ArrayList<Predmet> polozeniPredmeti) {
-		this.polozeniPredmeti = polozeniPredmeti;
-	}
-
-
-	public ArrayList<Predmet> getNepolozeniPredmeti() {
-		return nepolozeniPredmeti;
-	}
-
-
-	public void setNepolozeniPredmeti(ArrayList<Predmet> nepolozeniPredmeti) {
-		this.nepolozeniPredmeti = nepolozeniPredmeti;
-	}
-
-
-	public ArrayList<Dokument> getDokumenta() {
-		return dokumenta;
-	}
-
-
-	public void setDokumenta(ArrayList<Dokument> dokumenta) {
-		this.dokumenta = dokumenta;
-	}
-
-
-	public ArrayList<Uplata> getUplate() {
-		return uplate;
-	}
-
-
-	public void setUplate(ArrayList<Uplata> uplate) {
-		this.uplate = uplate;
-	}
-	
-	public Set<Ispit> getIspiti() {
-		return ispiti;
-	}
-
-	public void setIspiti(Set<Ispit> ispiti) {
-		this.ispiti = ispiti;
+	public Student() {
+		super();
 	}
 
 
@@ -135,55 +89,99 @@ public class Student {
 	}
 
 
-	public String getKorisnickoIme() {
-		return korisnickoIme;
+	public String getCardNumber() {
+		return cardNumber;
 	}
 
 
-	public void setKorisnickoIme(String korisnickoIme) {
-		this.korisnickoIme = korisnickoIme;
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 
 
-	public String getLozinka() {
-		return lozinka;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setLozinka(String lozinka) {
-		this.lozinka = lozinka;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
-	public String getIme() {
-		return ime;
+	public String getLastname() {
+		return lastname;
 	}
 
 
-	public void setIme(String ime) {
-		this.ime = ime;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 
-	public String getPrezime() {
-		return prezime;
+	public Set<Enrollment> getEnrollments() {
+		return enrollments;
 	}
 
 
-	public void setPrezime(String prezime) {
-		this.prezime = prezime;
+	public void setEnrollments(Set<Enrollment> enrollments) {
+		this.enrollments = enrollments;
 	}
 
 
-	public Uloga getUloga() {
-		return uloga;
+	public Set<Course> getPassed_courses() {
+		return passed_courses;
 	}
 
 
-	public void setUloga(Uloga uloga) {
-		this.uloga = uloga;
+	public void setPassed_courses(Set<Course> passed_courses) {
+		this.passed_courses = passed_courses;
 	}
 
+
+	public Set<Course> getUnfinished_courses() {
+		return unfinished_courses;
+	}
+
+
+	public void setUnfinished_courses(Set<Course> unfinished_courses) {
+		this.unfinished_courses = unfinished_courses;
+	}
+
+
+	public Set<Document> getDocuments() {
+		return documents;
+	}
+
+
+	public void setDocuments(Set<Document> documents) {
+		this.documents = documents;
+	}
+
+
+	public Set<Payment> getPayments() {
+		return payments;
+	}
+
+
+	public void setPayments(Set<Payment> payments) {
+		this.payments = payments;
+	}
+
+
+	public Set<Exam> getExams() {
+		return exams;
+	}
+
+
+	public void setExams(Set<Exam> exams) {
+		this.exams = exams;
+	}
+
+
+	
+
+	
 	
 	
 	

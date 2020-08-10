@@ -6,24 +6,24 @@ public class AdminDTO {
 	
 	private Long id;
 	
-	private String ime;
+	private String name;
 	
-	private String prezime;
+	private String lastname;
 
 	public AdminDTO() {
 		
 	}
 	
 	public AdminDTO(Admin admin) {
-		this(admin.getId(), admin.getIme(), admin.getPrezime());
+		this(admin.getId(), admin.getName(), admin.getLastname());
 	}
 	
 	
-	public AdminDTO(Long id, String ime, String prezime) {
+	public AdminDTO(Long id, String name, String lastname) {
 		super();
 		this.id = id;
-		this.ime = ime;
-		this.prezime = prezime;
+		this.name = name;
+		this.lastname = lastname;
 	}
 
 	public Long getId() {
@@ -34,20 +34,20 @@ public class AdminDTO {
 		this.id = id;
 	}
 
-	public String getIme() {
-		return ime;
+	public String getName() {
+		return name;
 	}
 
-	public void setIme(String ime) {
-		this.ime = ime;
+	public void setName(String ime) {
+		this.name = ime;
 	}
 
-	public String getPrezime() {
-		return prezime;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setPrezime(String prezime) {
-		this.prezime = prezime;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	
 	

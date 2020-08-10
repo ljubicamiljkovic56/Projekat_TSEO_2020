@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import projekatTSEO.service.StudentService;
-import projekatTSEO.dto.PredmetDTO;
-import projekatTSEO.app.model.Ispit;
-import projekatTSEO.app.model.PohadjanjePredmeta;
+import projekatTSEO.dto.CourseDTO;
+import projekatTSEO.app.model.Exam;
+import projekatTSEO.app.model.Enrollment;
 import projekatTSEO.app.model.Student;
-import projekatTSEO.dto.IspitDTO;
-import projekatTSEO.dto.IspitPeriodDTO;
-import projekatTSEO.dto.PohadjanjePredmetaDTO;
+import projekatTSEO.dto.ExamDTO;
+import projekatTSEO.dto.ExamPeriodDTO;
+import projekatTSEO.dto.EnrollmentDTO;
 import projekatTSEO.dto.StudentDTO;
 
 
@@ -120,7 +120,7 @@ public class StudentController {
 	@RequestMapping(value = "/findPrezime", method = RequestMethod.GET)
 	public ResponseEntity<List<StudentDTO>> getStudentsByPrezime(
 			@RequestParam String prezime) {
-		List<Student> students = studentService.findByPrezime(prezime);
+		List<Student> students = studentService.findByLastname(prezime);
 		//convertuje studente u DTO
 		List<StudentDTO> studentsDTO = new ArrayList<>();
 		for (Student s : students) {
@@ -130,40 +130,40 @@ public class StudentController {
 	}	
 	
 	@RequestMapping(value = "/{studentId}/courses", method = RequestMethod.GET)
-	public ResponseEntity<List<PohadjanjePredmetaDTO>> getStudentoviPredmeti(
+	public ResponseEntity<List<EnrollmentDTO>> getStudentoviPredmeti(
 			@PathVariable Long studentId) {
 		Student student = studentService.findOne(studentId);
-		Set<PohadjanjePredmeta> pohadjanjePredmeta = student.getPohadjanjePredmeta();
-		List<PohadjanjePredmetaDTO> pohadjanjePredmetaaDTO = new ArrayList<>();
-		for (PohadjanjePredmeta pp: pohadjanjePredmeta) {
-			PohadjanjePredmetaDTO pohadjanjePredmetaDTO = new PohadjanjePredmetaDTO();
-			pohadjanjePredmetaDTO.setId(pp.getId());
-			pohadjanjePredmetaDTO.setPocetak(pp.getPocetak());
-			pohadjanjePredmetaDTO.setKraj(pp.getKraj());
-			pohadjanjePredmetaDTO.setPredmet(new PredmetDTO(pp.getPredmet()));
+		Set<Enrollment> pohadjanjePredmeta = student.getEnrollments();
+		List<EnrollmentDTO> pohadjanjePredmetaaDTO = new ArrayList<>();
+		for (Enrollment pp: pohadjanjePredmeta) {
+			EnrollmentDTO enrollmentDTO = new EnrollmentDTO();
+			enrollmentDTO.setId(pp.getId());
+			enrollmentDTO.setPocetak(pp.getPocetak());
+			enrollmentDTO.setKraj(pp.getKraj());
+			enrollmentDTO.setPredmet(new CourseDTO(pp.getPredmet()));
 			//ostavljamo studentsko poilje prazno
 			
-			pohadjanjePredmetaaDTO.add(pohadjanjePredmetaDTO);
+			pohadjanjePredmetaaDTO.add(enrollmentDTO);
 		}
 		return new ResponseEntity<>(pohadjanjePredmetaaDTO, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{studentId}/ispiti", method = RequestMethod.GET)
-	public ResponseEntity<List<IspitDTO>> getStudentIspiti(
+	public ResponseEntity<List<ExamDTO>> getStudentIspiti(
 			@PathVariable Long studentId) {
 		Student student = studentService.findOne(studentId);
-		Set<Ispit> ispiti = student.getIspiti();
-		List<IspitDTO> ispitiDTO = new ArrayList<>();
-		for (Ispit i: ispiti) {
-			IspitDTO ispitDTO = new IspitDTO();
-			ispitDTO.setId(i.getId());
-			ispitDTO.setBrojBodova(i.getBrojBodova());
-			ispitDTO.setPObavezeBodovi(i.getPObavezeBodovi());
-			ispitDTO.setDate(i.getDatum());
-			ispitDTO.setPredmet(new PredmetDTO(i.getPredmet()));
-			ispitDTO.setIspitPeriod(new IspitPeriodDTO(i.getIspitPeriod()));
+		Set<Exam> ispiti = student.getIspiti();
+		List<ExamDTO> ispitiDTO = new ArrayList<>();
+		for (Exam i: ispiti) {
+			ExamDTO examDTO = new ExamDTO();
+			examDTO.setId(i.getId());
+			examDTO.setBrojBodova(i.getBrojBodova());
+			examDTO.setPObavezeBodovi(i.getPObavezeBodovi());
+			examDTO.setDate(i.getDatum());
+			examDTO.setPredmet(new CourseDTO(i.getPredmet()));
+			examDTO.setIspitPeriod(new ExamPeriodDTO(i.getIspitPeriod()));
 		
-			ispitiDTO.add(ispitDTO);
+			ispitiDTO.add(examDTO);
 		}
 		return new ResponseEntity<>(ispitiDTO, HttpStatus.OK);
 	}

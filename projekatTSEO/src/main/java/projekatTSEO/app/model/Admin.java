@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 public class Admin {
@@ -13,21 +14,10 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "korisnicko_ime")
-	private String korisnickoIme;
+	private String name;
 	
-	@Column(name = "lozinka")
-	private String lozinka;
+	private String lastname;
 	
-	@Column(name = "ime")
-	private String ime;
-	
-	@Column(name = "prezime")
-	private String prezime;
-//	
-//	@Column(name = "uloga")
-//	private Uloga uloga = Uloga.admin;
-
 	public Long getId() {
 		return id;
 	}
@@ -36,36 +26,31 @@ public class Admin {
 		this.id = id;
 	}
 
-	public String getKorisnickoIme() {
-		return korisnickoIme;
+	public String getName() {
+		return name;
 	}
 
-	public void setKorisnickoIme(String korisnickoIme) {
-		this.korisnickoIme = korisnickoIme;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLozinka() {
-		return lozinka;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLozinka(String lozinka) {
-		this.lozinka = lozinka;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
-	public String getIme() {
-		return ime;
+	public Admin(Long id, String name, String lastname) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.lastname = lastname;
 	}
 
-	public void setIme(String ime) {
-		this.ime = ime;
-	}
-
-	public String getPrezime() {
-		return prezime;
-	}
-
-	public void setPrezime(String prezime) {
-		this.prezime = prezime;
+	public Admin() {
+		super();
 	}
 
 

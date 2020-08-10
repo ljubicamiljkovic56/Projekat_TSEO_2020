@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import projekatTSEO.service.KorisnikService;
+import projekatTSEO.service.UserService;
 
 
 @RestController
 public class LoginController {
 
 	@Autowired
-	public KorisnikService korisnikService;	
+	public UserService userService;	
 	
 	@RequestMapping(value = "/api/login", method = RequestMethod.POST)
-	public ResponseEntity<String> login(@RequestParam String korisnickoIme, @RequestParam String lozinka) {
-		System.out.println(korisnickoIme);
-		System.out.println(lozinka);
+	public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
+		System.out.println(username);
+		System.out.println(password);
 		
-		String korisnikAuth = korisnikService.proveriKorisnika(korisnickoIme, lozinka);
+		String userAuth = userService.checkUserRole(username, password);
 		
 		
 		
-		return new ResponseEntity<String>(korisnikAuth, HttpStatus.CREATED);
+		return new ResponseEntity<String>(userAuth, HttpStatus.CREATED);
       
 	}
 

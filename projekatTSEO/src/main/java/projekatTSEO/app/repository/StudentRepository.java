@@ -8,7 +8,7 @@ import projekatTSEO.app.model.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-	Student findByBrojIndeksa (String brojIndeksa);
+	Student findByCardNumber (String cardNumber);
 	
-	List<Student> findByPrezime (String prezime);
+	List<Student> findByLastname (String lastname);
 }
