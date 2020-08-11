@@ -17,11 +17,11 @@ public class UserService {
 	    	if(user == null) {
 	    		System.out.println("Wrong username or password.");
 	    	}else if (user.getPassword().equals(password)){
-	    		if(user.getRole().equals("admin")) {
+	    		if(user.getRole().getName().equals("admin")) {
 	    			System.out.println("Logged in as admin");
-	    		}else if(user.getRole().equals("student")){
+	    		}else if(user.getRole().getName().equals("student")){
 	    			System.out.println("Logged in as student");
-	    		}else if(user.getRole().equals("teacher")){
+	    		}else if(user.getRole().getName().equals("teacher")){
 	    			System.out.println("Logged in as teacher");
 	    		}
 	    	}else {

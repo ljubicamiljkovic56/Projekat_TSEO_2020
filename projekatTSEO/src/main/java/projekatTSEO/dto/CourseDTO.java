@@ -1,11 +1,6 @@
 package projekatTSEO.dto;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import projekatTSEO.app.model.Course;
-import projekatTSEO.app.model.Enrollment;
-import projekatTSEO.app.model.Exam;
 
 
 public class CourseDTO {
