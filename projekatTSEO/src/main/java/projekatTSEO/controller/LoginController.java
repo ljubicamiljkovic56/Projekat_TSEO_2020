@@ -18,17 +18,17 @@ public class LoginController {
 	@Autowired
 	public UserService userService;	
 	
-	@RequestMapping(value = "/api/login", method = RequestMethod.POST)
-	public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
-		System.out.println(username);
-		System.out.println(password);
-		
-		String userAuth = userService.checkUserRole(username, password);
-		
-		
-		
-		return new ResponseEntity<String>(userAuth, HttpStatus.CREATED);
-      
-	}
+//	@RequestMapping(value = "/api/login", method = RequestMethod.POST)
+//	public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password) {
+//		System.out.println(username);
+//		System.out.println(password);
+//		
+//		String userAuth = userService.checkUserRole(username, password);
+//		
+//		
+//		
+//		return new ResponseEntity<String>(userAuth, HttpStatus.CREATED);
+//      
+//	}
 
 }

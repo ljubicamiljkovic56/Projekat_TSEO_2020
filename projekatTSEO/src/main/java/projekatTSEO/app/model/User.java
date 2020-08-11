@@ -1,6 +1,9 @@
 package projekatTSEO.app.model;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 
 @Entity
@@ -22,9 +27,12 @@ public class User {
 	private String password;
 	
 	
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
-	private Role role;
+//	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+//	private Role role;
 	
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	private Set<UserRole> userRoles = new HashSet<UserRole>();
+
 	
 //	@OneToMany(mappedBy = "korisnik", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 //	private Set<UserRole> korisnikovaUloga = new HashSet<UserRole>();
@@ -54,14 +62,22 @@ public class User {
 		this.password = password;
 	}
 
-
-	public Role getRole() {
-		return role;
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
 	}
+
+
+	/*
+	 * public Role getRole() { return role; }
+	 * 
+	 * public void setRole(Role role) { this.role = role; }
+	 */
+	
+	
 
 //	public Set<UserRole> getKorisnikovaUloga() {
 //		return korisnikovaUloga;

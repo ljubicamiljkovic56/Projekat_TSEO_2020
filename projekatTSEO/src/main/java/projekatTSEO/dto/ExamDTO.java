@@ -24,17 +24,17 @@ public class ExamDTO {
 		
 	}
 	
-	public ExamDTO(Exam ispit) {
-		id = ispit.getId();
-		points = ispit.getPoints();
-		pObavezeBodovi = ispit.getpObavezeBodovi();
-		date = ispit.getDate();
-		course = new CourseDTO(ispit.getCourse());
-		student = new StudentDTO(ispit.getStudent());
-		examPeriod = new ExamPeriodDTO(ispit.getExamPeriod());
-		grade = ispit.getGrade();
-		teacher = new TeacherDTO(ispit.getTeacher());
-	}
+//	public ExamDTO(Exam ispit) {
+//		id = ispit.getId();
+//		points = ispit.getPoints();
+//		pObavezeBodovi = ispit.getpObavezeBodovi();
+//		date = ispit.getDate();
+//		course = new CourseDTO(ispit.getCourse());
+//		student = new StudentDTO(ispit.getStudent());
+//		examPeriod = new ExamPeriodDTO(ispit.getExamPeriod());
+//		grade = ispit.getGrade();
+//		teacher = new TeacherDTO(ispit.getTeacher());
+//	}
 
 	public Long getId() {
 		return id;

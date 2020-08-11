@@ -17,6 +17,10 @@ public class Exam {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+    private Integer examPoints;
+    
+    private Integer labPoints;
+	
 	private Date date;
 	
 	
@@ -33,13 +37,28 @@ public class Exam {
 	private ExamPeriod examPeriod;
 	
 	
-	private double points;
 	
-	private double kolokvijumPoints;
 	
-	private double pObavezeBodovi;
-	
-	private int grade;
+public Exam(Long id, Integer examPoints, Integer labPoints, Date date, Course course, Student student, Teacher teacher,
+		ExamPeriod examPeriod) {
+	super();
+	this.id = id;
+	this.examPoints = examPoints;
+	this.labPoints = labPoints;
+	this.date = date;
+	this.course = course;
+	this.student = student;
+	this.examPeriod = examPeriod;
+	this.teacher = teacher;
+}
+
+//	private double points;
+//	
+//	private double kolokvijumPoints;
+//	
+//	private double pObavezeBodovi;
+//	
+//	private int grade;
 
 	public Long getId() {
 		return id;
@@ -81,38 +100,20 @@ public class Exam {
 		this.examPeriod = examPeriod;
 	}
 
-
-	public double getPoints() {
-		return points;
+	public Integer getExamPoints() {
+		return examPoints;
 	}
 
-	public void setPoints(double points) {
-		this.points = points;
+	public void setExamPoints(Integer examPoints) {
+		this.examPoints = examPoints;
 	}
 
-	public double getKolokvijumPoints() {
-		return kolokvijumPoints;
+	public Integer getLabPoints() {
+		return labPoints;
 	}
 
-	public void setKolokvijumPoints(double kolokvijumPoints) {
-		this.kolokvijumPoints = kolokvijumPoints;
-	}
-
-
-	public double getpObavezeBodovi() {
-		return pObavezeBodovi;
-	}
-
-	public void setpObavezeBodovi(double pObavezeBodovi) {
-		this.pObavezeBodovi = pObavezeBodovi;
-	}
-
-	public int getGrade() {
-		return grade;
-	}
-
-	public void setGrade(int grade) {
-		this.grade = grade;
+	public void setLabPoints(Integer labPoints) {
+		this.labPoints = labPoints;
 	}
 
 	public Teacher getTeacher() {
@@ -122,25 +123,66 @@ public class Exam {
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
+	
+	
 
-	public Exam(Long id, Date date, Course course, Student student, Teacher teacher, ExamPeriod examPeriod,
-			double points, double kolokvijumPoints, double pObavezeBodovi, int grade) {
-		super();
-		this.id = id;
-		this.date = date;
-		this.course = course;
-		this.student = student;
-		this.teacher = teacher;
-		this.examPeriod = examPeriod;
-		this.points = points;
-		this.kolokvijumPoints = kolokvijumPoints;
-		this.pObavezeBodovi = pObavezeBodovi;
-		this.grade = grade;
-	}
 
-	public Exam() {
-		super();
-	}
+//	public double getPoints() {
+//		return points;
+//	}
+//
+//	public void setPoints(double points) {
+//		this.points = points;
+//	}
+//
+//	public double getKolokvijumPoints() {
+//		return kolokvijumPoints;
+//	}
+//
+//	public void setKolokvijumPoints(double kolokvijumPoints) {
+//		this.kolokvijumPoints = kolokvijumPoints;
+//	}
+//
+//
+//	public double getpObavezeBodovi() {
+//		return pObavezeBodovi;
+//	}
+//
+//	public void setpObavezeBodovi(double pObavezeBodovi) {
+//		this.pObavezeBodovi = pObavezeBodovi;
+//	}
+//
+//	public int getGrade() {
+//		return grade;
+//	}
+//
+//	public void setGrade(int grade) {
+//		this.grade = grade;
+//	}
+
+//	public Teacher getTeacher() {
+//		return teacher;
+//	}
+//
+//	public void setTeacher(Teacher teacher) {
+//		this.teacher = teacher;
+//	}
+
+//	public Exam(Long id, Date date, Course course, Student student, Teacher teacher, ExamPeriod examPeriod,
+//			double points, double kolokvijumPoints, double pObavezeBodovi, int grade) {
+//		super();
+//		this.id = id;
+//		this.date = date;
+//		this.course = course;
+//		this.student = student;
+//		//this.teacher = teacher;
+//		this.examPeriod = examPeriod;
+//		this.points = points;
+//		this.kolokvijumPoints = kolokvijumPoints;
+//		this.pObavezeBodovi = pObavezeBodovi;
+//		this.grade = grade;
+//	}
+
 	
 	
 	

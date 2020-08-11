@@ -147,24 +147,24 @@ public class StudentController {
 		return new ResponseEntity<>(enrollmentsDTO, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{studentId}/exams", method = RequestMethod.GET)
-	public ResponseEntity<List<ExamDTO>> getStudentExams(
-			@PathVariable Long studentId) {
-		Student student = studentService.findOne(studentId);
-		Set<Exam> exams = student.getExams();
-		List<ExamDTO> examsDTO = new ArrayList<>();
-		for (Exam i: exams) {
-			ExamDTO examDTO = new ExamDTO();
-			examDTO.setId(i.getId());
-			examDTO.setPoints(i.getPoints());
-			examDTO.setpObavezeBodovi(i.getpObavezeBodovi());
-			examDTO.setDate(i.getDate());
-			examDTO.setCourse(new CourseDTO(i.getCourse()));
-			examDTO.setExamPeriod(new ExamPeriodDTO(i.getExamPeriod()));
-		
-			examsDTO.add(examDTO);
-		}
-		return new ResponseEntity<>(examsDTO, HttpStatus.OK);
-	}
+//	@RequestMapping(value = "/{studentId}/exams", method = RequestMethod.GET)
+//	public ResponseEntity<List<ExamDTO>> getStudentExams(
+//			@PathVariable Long studentId) {
+//		Student student = studentService.findOne(studentId);
+//		Set<Exam> exams = student.getExams();
+//		List<ExamDTO> examsDTO = new ArrayList<>();
+//		for (Exam i: exams) {
+//			ExamDTO examDTO = new ExamDTO();
+//			examDTO.setId(i.getId());
+//			examDTO.setPoints(i.getPoints());
+//			examDTO.setpObavezeBodovi(i.getpObavezeBodovi());
+//			examDTO.setDate(i.getDate());
+//			examDTO.setCourse(new CourseDTO(i.getCourse()));
+//			examDTO.setExamPeriod(new ExamPeriodDTO(i.getExamPeriod()));
+//		
+//			examsDTO.add(examDTO);
+//		}
+//		return new ResponseEntity<>(examsDTO, HttpStatus.OK);
+//	}
 
 }

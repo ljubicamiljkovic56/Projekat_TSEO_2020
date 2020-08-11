@@ -1,59 +1,75 @@
-SET FOREIGN_KEY_CHECKS = 0
+set foreign_key_checks = 0;
 
+-- delete all rows
+truncate table user_authority;
+truncate table authority;
+truncate table user;
+truncate table enrollment;
+truncate table teaching;
+truncate table exam;
+truncate table student;
+truncate table course;
+truncate table teacher;
+truncate table exam_period;
 
---TRUNCATE TABLE user_role;
---TRUNCATE TABLE admins;
---TRUNCATE TABLE teachers;
---TRUNCATE TABLE student;
-TRUNCATE TABLE role;
-TRUNCATE TABLE users;
-TRUNCATE TABLE courses;
-TRUNCATE TABLE documents;
-TRUNCATE TABLE payments;
-TRUNCATE TABLE enrollments;
-TRUNCATE TABLE course_teacher;
-TRUNCATE TABLE exams;
-TRUNCATE TABLE exam_period;
+set foreign_key_checks = 1;
 
-SET FOREIGN_KEY_CHECKS = 1
+insert into authority (name) values ('ROLE_ADMIN');
+insert into authority (name) values ('ROLE_USER');
 
+-- password is 'admin' (bcrypt encoded) 
+insert into user (username, password) values ('admin', '$2a$04$SwzgBrIJZhfnzOw7KFcdzOTiY6EFVwIpG7fkF/D1w26G1.fWsi.aK');
+-- password is 'user' (bcrypt encoded)
+insert into user (username, password) values ('user', '$2a$04$Amda.Gm4Q.ZbXz9wcohDHOhOBaNQAkSS1QO26Eh8Hovu3uzEpQvcq');
 
-INSERT INTO role (name) VALUES ('admin');
-INSERT INTO role (name) VALUES ('teacher');
-INSERT INTO role (name) VALUES ('student');
+insert into user_authority (user_id, authority_id) values (1, 1); -- admin has ROLE_ADMIN
+insert into user_authority (user_id, authority_id) values (2, 2); -- user has ROLE_USER
 
-INSERT INTO users (username, password, name, lastname, role) VALUES ('pera', 'pera', 1);
-INSERT INTO users (username, password, name, lastname, role) VALUES ('ana', 'ana', 'Ana', 'Mitic', 2);
-INSERT INTO users (username, password, name, lastname, role) VALUES ('mile', 'mile', 'Mile', 'Milic', 3);
+insert into student (card_number, first_name, last_name) values ('ra1-2014', 'Marko', 'Marković');
+insert into student (card_number, first_name, last_name) values ('ra2-2014', 'Milan', 'Milanović');
+insert into student (card_number, first_name, last_name) values ('ra3-2014', 'Ivana', 'Novaković');
+insert into student (card_number, first_name, last_name) values ('ra4-2014', 'Bojan', 'Bojić');
+insert into student (card_number, first_name, last_name) values ('ra5-2014', 'Jelena', 'Marković');
+insert into student (card_number, first_name, last_name) values ('ra6-2014', 'Zoran', 'Zoranović');
+insert into student (card_number, first_name, last_name) values ('ra7-2014', 'Milica', 'Petrović');
+insert into student (card_number, first_name, last_name) values ('ra8-2014', 'Petar', 'Petrović');
+insert into student (card_number, first_name, last_name) values ('ra9-2014', 'Igor', 'Jovin');
 
---INSERT INTO user_role (korisnik_id, uloga_id) VALUES (1, 1);
---INSERT INTO user_role (korisnik_id, uloga_id) VALUES (2, 2);
---INSERT INTO user_role (korisnik_id, uloga_id) VALUES (3, 3);
+insert into course (name) values ('Matematika');
+insert into course (name) values ('Osnove programiranja');
+insert into course (name) values ('Objektno programiranje');
 
-INSERT INTO courses (name, points) VALUES ('Osnove web programiranja', 6);
-INSERT INTO courses (name, points) VALUES ('Engleski jezik', 4);
-INSERT INTO courses (name, points) VALUES ('Matematika 2', 8);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 1, 1);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 2, 1);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 3, 1);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 4, 1);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 1, 2);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 2, 2);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 3, 2);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 5, 1);
+insert into enrollment (start_date, end_date, student_id, course_id) values ('2015-01-01', '2015-06-01', 6, 2);
 
-INSERT INTO documents (document_type) VALUES ('upisnica');
+insert into teacher (first_name, last_name, rank) values ('Milan', 'Jovanovic', 'docent');
+insert into teacher (first_name, last_name, rank) values ('Sanja', 'Stanic', 'vanredni profesor');
+insert into teacher (first_name, last_name, rank) values ('Nemanja', 'Jankovic', 'redovni profesor');
 
-			
-INSERT INTO student (card_number, course_enrollment, passed_courses, left_courses, documents, payments) VALUES ('SF 33/2018', 1, 2, 3, 1, 1);			
+insert into teaching (course_id, teacher_id) values (1, 1);
+insert into teaching (course_id, teacher_id) values (1, 2);
+insert into teaching (course_id, teacher_id) values (2, 2);
+insert into teaching (course_id, teacher_id) values (3, 3);
 
-INSERT INTO payments (student, reason_for_payment, receiver, amount, recievers_account, model, call_number, payment_date)
-			VALUES (3, 'Uplata za ispitni rok', 'Fakultet Tehnickih Nauka', 1000, '123456', 97, '73884-992', '2020-01-04');
-			
-INSERT INTO teacher (title, teaching_courses) VALUES ('redovni profesor', 1);
+insert into exam_period (name, start_date, end_date) values ('Januarski 2016', '2016-01-27', '2016-02-25');
+insert into exam_period (name, start_date, end_date) values ('Aprilski 2016', '2016-04-18', '2016-04-23');
+insert into exam_period (name, start_date, end_date) values ('Junski 2016', '2016-06-15', '2016-07-14');
+insert into exam_period (name, start_date, end_date) values ('Septembarski 2016', '2016-08-27', '2016-09-25');
 
-INSERT INTO course_teacher (course, teachers) VALUES (1, 2);
-
-INSERT INTO enrollments (start, finish, course, teachers, students) VALUES ('2019-10-02', '2020-01-10', 1, 1, 3);
-
-INSERT INTO exams (exam_date, student, course, exam_period, points, kolokvijum_points, p_obaveze_bodovi) VALUES ('2020-01-25', 1, 1, 1, 30, 30, 28);
-
-INSERT INTO exam_period (name, period_start, period_end, exams) VALUES ('Januarski 2020', '2020-01-12', '2020-01-31', 1);
-
-
-
-
+insert into exam (student_id, course_id, exam_period_id, date, exam_points, lab_points) values (
+	1, 1, 1, '2016-02-01', 20, 70);
+insert into exam (student_id, course_id, exam_period_id, date, exam_points, lab_points) values (
+	1, 2, 2, '2016-04-19', 15, 55);
+insert into exam (student_id, course_id, exam_period_id, date, exam_points, lab_points) values (
+	2, 1, 1, '2016-02-01', 18, 60);
+insert into exam (student_id, course_id, exam_period_id, date, exam_points, lab_points) values (
+	2, 2, 2, '2016-04-19', 17, 57);
 
 
